@@ -73,10 +73,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Victory"
+        android:text="Winner is.."
         android:id="@+id/resultLbl"
         android:layout_below="@+id/compChoiseLbl"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score: 0"
+        android:id="@+id/scoreLbl"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
