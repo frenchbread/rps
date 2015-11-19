@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
     Button rockBtn, paperBtn, scissorsBtn;
     TextView computerChoiceLbl, playerChoiceLbl, resultLbl, scoreLbl;
 
+    // TODO: Change labels to images.
+
     static String rock = "Rock", paper = "Paper", scissors = "Scissors";
     static String[] choices = { rock, paper, scissors };
 
