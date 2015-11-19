@@ -13,10 +13,12 @@ import java.util.Random;
 public class MainActivity extends Activity {
 
     Button rockBtn, paperBtn, scissorsBtn;
-    TextView computerChoiceLbl, playerChoiceLbl, resultLbl;
+    TextView computerChoiceLbl, playerChoiceLbl, resultLbl, scoreLbl;
 
     static String rock = "Rock", paper = "Paper", scissors = "Scissors";
     static String[] choices = { rock, paper, scissors };
+
+    static int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
         computerChoiceLbl = (TextView)findViewById(R.id.compChoiseLbl);
         playerChoiceLbl = (TextView)findViewById(R.id.playerChoiseLbl);
         resultLbl = (TextView)findViewById(R.id.resultLbl);
+        scoreLbl = (TextView)findViewById(R.id.scoreLbl);
     }
 
     public void rockChoice(View view){
@@ -42,6 +45,8 @@ public class MainActivity extends Activity {
 
         resultLbl.setText(Result(cmpChoice, plrChoice));
 
+        scoreLbl.setText("Score: " + score);
+
     }
 
     public void paperChoice(View view){
@@ -53,6 +58,8 @@ public class MainActivity extends Activity {
         playerChoiceLbl.setText(plrChoise);
 
         resultLbl.setText(Result(cmpChoise, plrChoise));
+
+        scoreLbl.setText("Score: " + score);
     }
 
     public void scissorsChoice(View view){
@@ -64,6 +71,8 @@ public class MainActivity extends Activity {
         playerChoiceLbl.setText(plrChoice);
 
         resultLbl.setText(Result(cmpChoice, plrChoice));
+
+        scoreLbl.setText("Score: " + score);
     }
 
     @Override
@@ -120,31 +129,37 @@ public class MainActivity extends Activity {
 
         // rock - paper -> paper wins
         if ((compChoise == rck) && (playerChoise == ppr)){
+            score++;
             return playerWins;
         }
 
         // rock - scissors -> rock wins
         if ((compChoise == rck) && (playerChoise == scrs)){
+            score = 0;
             return compWins;
         }
 
         // scissors - rock -> rock wins
         if ((compChoise == scrs) && (playerChoise == rck)){
+            score++;
             return playerWins;
         }
 
         // scissors - paper -> scissors win
         if ((compChoise == scrs) && (playerChoise == ppr)){
+            score = 0;
             return compWins;
         }
 
         // paper - scissors -> scissors win
         if ((compChoise == ppr) && (playerChoise == scrs)){
+            score++;
             return playerWins;
         }
 
         // paper - rock -> paper wins
         if ((compChoise == ppr) && (playerChoise == rck)){
+            score = 0;
             return compWins;
         }
 
