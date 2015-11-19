@@ -6,7 +6,7 @@ Super simple Rock-Paper-Scissors game on Android.
 
 ## TODO
 
-[ ] Replace RPS labels with images.
+* Replace RPS labels with images.
 
 ## License
 
