@@ -36,48 +36,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Computer"
-        android:id="@+id/textView"
-        android:layout_marginTop="160dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Player"
-        android:id="@+id/textView2"
-        android:layout_alignTop="@+id/textView"
-        android:layout_alignEnd="@+id/scissorsBtn" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Computer choise"
-        android:id="@+id/compChoiseLbl"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Player choise"
-        android:id="@+id/playerChoiseLbl"
-        android:layout_alignTop="@+id/compChoiseLbl"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Winner is.."
         android:id="@+id/resultLbl"
-        android:layout_below="@+id/compChoiseLbl"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,5 +48,42 @@
         android:id="@+id/scoreLbl"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=".."
+        android:id="@+id/computerChoiseLbl"
+        android:layout_marginTop="114dp"
+        android:layout_below="@+id/scoreLbl"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=".."
+        android:id="@+id/playerChoiseLbl"
+        android:layout_alignBottom="@+id/computerChoiseLbl"
+        android:layout_alignEnd="@+id/scissorsBtn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Computer"
+        android:id="@+id/textView"
+        android:layout_below="@+id/computerChoiseLbl"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Player"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/playerChoiseLbl"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

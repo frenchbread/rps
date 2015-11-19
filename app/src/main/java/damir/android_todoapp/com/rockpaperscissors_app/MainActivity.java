@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
         paperBtn = (Button)findViewById(R.id.paperBtn);
         scissorsBtn = (Button)findViewById(R.id.scissorsBtn);
 
-        computerChoiceLbl = (TextView)findViewById(R.id.compChoiseLbl);
+        computerChoiceLbl = (TextView)findViewById(R.id.computerChoiseLbl);
         playerChoiceLbl = (TextView)findViewById(R.id.playerChoiseLbl);
         resultLbl = (TextView)findViewById(R.id.resultLbl);
         scoreLbl = (TextView)findViewById(R.id.scoreLbl);
