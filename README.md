@@ -2,7 +2,7 @@
 
 Super simple Rock-Paper-Scissors game on Android.
 
-![Screenshot](https://raw.githubusercontent.com/frenchbread/rps/master/docs/game.jpg)
+Check out gameplay [screenshot](https://raw.githubusercontent.com/frenchbread/rps/master/docs/game.jpg).
 
 ## TODO
 
