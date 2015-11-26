@@ -14,13 +14,13 @@ import java.util.Random;
 public class MainActivity extends Activity {
 
     Button rockBtn, paperBtn, scissorsBtn;
-    TextView computerChoiceLbl, playerChoiceLbl, resultLbl, scoreLbl;
+    TextView computerChoiceText, playerChoiceText, resultText, scoreText;
 
     static ImageView computerChoiceImg, playerChoiceImg;
 
     // TODO: Change labels to images.
 
-    static String rock = "Rock", paper = "Paper", scissors = "Scissors";
+    static final String rock = "Rock", paper = "Paper", scissors = "Scissors";
     static String[] choices = { rock, paper, scissors };
 
     static int score = 0;
@@ -34,13 +34,13 @@ public class MainActivity extends Activity {
         paperBtn = (Button)findViewById(R.id.paperBtn);
         scissorsBtn = (Button)findViewById(R.id.scissorsBtn);
 
-        computerChoiceLbl = (TextView)findViewById(R.id.computerChoiseLbl);
-        playerChoiceLbl = (TextView)findViewById(R.id.playerChoiseLbl);
-        resultLbl = (TextView)findViewById(R.id.resultLbl);
-        scoreLbl = (TextView)findViewById(R.id.scoreLbl);
+        computerChoiceText = (TextView)findViewById(R.id.computerChoiceText);
+        playerChoiceText = (TextView)findViewById(R.id.computerChoiceText);
+        resultText = (TextView)findViewById(R.id.resultText);
+        scoreText = (TextView)findViewById(R.id.scoreText);
 
-        computerChoiceImg = (ImageView)findViewById(R.id.computerChoiseImg);
-        playerChoiceImg = (ImageView)findViewById(R.id.playerChoiseImg);
+        computerChoiceImg = (ImageView)findViewById(R.id.computerChoiceImg);
+        playerChoiceImg = (ImageView)findViewById(R.id.playerChoiceImg);
     }
 
     public void rockChoice(View view){
@@ -48,26 +48,30 @@ public class MainActivity extends Activity {
         String cmpChoice = PRS();
         String plrChoice = rock;
 
-        computerChoiceLbl.setText(cmpChoice);
-        playerChoiceLbl.setText(plrChoice);
+        computerChoiceText.setText(cmpChoice);
+        playerChoiceText.setText(plrChoice);
 
-        resultLbl.setText(Result(cmpChoice, plrChoice));
+        changeImages(cmpChoice, plrChoice);
 
-        scoreLbl.setText("Score: " + score);
+        resultText.setText(Result(cmpChoice, plrChoice));
+
+        scoreText.setText("Score: " + score);
 
     }
 
     public void paperChoice(View view){
 
-        String cmpChoise = PRS();
-        String plrChoise = paper;
+        String cmpChoice = PRS();
+        String plrChoice = paper;
 
-        computerChoiceLbl.setText(cmpChoise);
-        playerChoiceLbl.setText(plrChoise);
+        computerChoiceText.setText(cmpChoice);
+        playerChoiceText.setText(plrChoice);
 
-        resultLbl.setText(Result(cmpChoise, plrChoise));
+        changeImages(cmpChoice, plrChoice);
 
-        scoreLbl.setText("Score: " + score);
+        resultText.setText(Result(cmpChoice, plrChoice));
+
+        scoreText.setText("Score: " + score);
     }
 
     public void scissorsChoice(View view){
@@ -75,12 +79,14 @@ public class MainActivity extends Activity {
         String cmpChoice = PRS();
         String plrChoice = scissors;
 
-        computerChoiceLbl.setText(cmpChoice);
-        playerChoiceLbl.setText(plrChoice);
+        computerChoiceText.setText(cmpChoice);
+        playerChoiceText.setText(plrChoice);
 
-        resultLbl.setText(Result(cmpChoice, plrChoice));
+        changeImages(cmpChoice, plrChoice);
 
-        scoreLbl.setText("Score: " + score);
+        resultText.setText(Result(cmpChoice, plrChoice));
+
+        scoreText.setText("Score: " + score);
     }
 
     @Override
@@ -118,6 +124,38 @@ public class MainActivity extends Activity {
         return choices[randomNum];
     }
 
+    public static void changeImages(String cmpChoice, String plrChoice){
+
+        switch (cmpChoice){
+            case rock:
+                computerChoiceImg.setBackgroundResource(R.drawable.rock);
+                break;
+            case paper:
+                computerChoiceImg.setBackgroundResource(R.drawable.paper);
+                break;
+            case scissors:
+                computerChoiceImg.setBackgroundResource(R.drawable.scissors);
+                break;
+            default:
+                computerChoiceImg.setBackground(null);
+        }
+
+        switch (plrChoice){
+            case rock:
+                playerChoiceImg.setBackgroundResource(R.drawable.rock);
+                break;
+            case paper:
+                playerChoiceImg.setBackgroundResource(R.drawable.paper);
+                break;
+            case scissors:
+                playerChoiceImg.setBackgroundResource(R.drawable.scissors);
+                break;
+            default:
+                playerChoiceImg.setBackground(null);
+        }
+
+    }
+
     // Funciton that checks throws and return result of how is the winner
     public static String Result(String compChoise, String playerChoise){
 
@@ -140,9 +178,6 @@ public class MainActivity extends Activity {
 
             score++;
 
-            computerChoiceImg.setBackgroundResource(R.drawable.rock);
-            playerChoiceImg.setBackgroundResource(R.drawable.paper);
-
             return playerWins;
         }
 
@@ -150,9 +185,6 @@ public class MainActivity extends Activity {
         if ((compChoise == rck) && (playerChoise == scrs)){
 
             score = 0;
-
-            computerChoiceImg.setBackgroundResource(R.drawable.paper);
-            playerChoiceImg.setBackgroundResource(R.drawable.scissors);
 
             return compWins;
         }
@@ -162,9 +194,6 @@ public class MainActivity extends Activity {
 
             score++;
 
-            computerChoiceImg.setBackgroundResource(R.drawable.scissors);
-            playerChoiceImg.setBackgroundResource(R.drawable.rock);
-
             return playerWins;
         }
 
@@ -172,9 +201,6 @@ public class MainActivity extends Activity {
         if ((compChoise == scrs) && (playerChoise == ppr)){
 
             score = 0;
-
-            computerChoiceImg.setBackgroundResource(R.drawable.scissors);
-            playerChoiceImg.setBackgroundResource(R.drawable.paper);
 
             return compWins;
         }
@@ -184,9 +210,6 @@ public class MainActivity extends Activity {
 
             score++;
 
-            computerChoiceImg.setBackgroundResource(R.drawable.paper);
-            playerChoiceImg.setBackgroundResource(R.drawable.scissors);
-
             return playerWins;
         }
 
@@ -194,9 +217,6 @@ public class MainActivity extends Activity {
         if ((compChoise == ppr) && (playerChoise == rck)){
 
             score = 0;
-
-            computerChoiceImg.setBackgroundResource(R.drawable.paper);
-            playerChoiceImg.setBackgroundResource(R.drawable.rock);
 
             return compWins;
         }
