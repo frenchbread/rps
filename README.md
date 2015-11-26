@@ -10,4 +10,4 @@ Check out gameplay [screenshot](https://raw.githubusercontent.com/frenchbread/rp
 
 ## License
 
-GNU AGPL
+[MIT License](https://github.com/frenchbread/rps/blob/master/LICENSE.md)
