@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -14,6 +15,8 @@ public class MainActivity extends Activity {
 
     Button rockBtn, paperBtn, scissorsBtn;
     TextView computerChoiceLbl, playerChoiceLbl, resultLbl, scoreLbl;
+
+    static ImageView computerChoiceImg, playerChoiceImg;
 
     // TODO: Change labels to images.
 
@@ -35,6 +38,9 @@ public class MainActivity extends Activity {
         playerChoiceLbl = (TextView)findViewById(R.id.playerChoiseLbl);
         resultLbl = (TextView)findViewById(R.id.resultLbl);
         scoreLbl = (TextView)findViewById(R.id.scoreLbl);
+
+        computerChoiceImg = (ImageView)findViewById(R.id.computerChoiseImg);
+        playerChoiceImg = (ImageView)findViewById(R.id.playerChoiseImg);
     }
 
     public void rockChoice(View view){
@@ -120,7 +126,7 @@ public class MainActivity extends Activity {
         String scrs = scissors;
 
         String compWins = "Computer wins!";
-        String playerWins = "User wins!";
+        String playerWins = "Player wins!";
         String even = "Even! Try again!";
 
         // computer - player
@@ -131,37 +137,67 @@ public class MainActivity extends Activity {
 
         // rock - paper -> paper wins
         if ((compChoise == rck) && (playerChoise == ppr)){
+
             score++;
+
+            computerChoiceImg.setBackgroundResource(R.drawable.rock);
+            playerChoiceImg.setBackgroundResource(R.drawable.paper);
+
             return playerWins;
         }
 
         // rock - scissors -> rock wins
         if ((compChoise == rck) && (playerChoise == scrs)){
+
             score = 0;
+
+            computerChoiceImg.setBackgroundResource(R.drawable.paper);
+            playerChoiceImg.setBackgroundResource(R.drawable.scissors);
+
             return compWins;
         }
 
         // scissors - rock -> rock wins
         if ((compChoise == scrs) && (playerChoise == rck)){
+
             score++;
+
+            computerChoiceImg.setBackgroundResource(R.drawable.scissors);
+            playerChoiceImg.setBackgroundResource(R.drawable.rock);
+
             return playerWins;
         }
 
         // scissors - paper -> scissors win
         if ((compChoise == scrs) && (playerChoise == ppr)){
+
             score = 0;
+
+            computerChoiceImg.setBackgroundResource(R.drawable.scissors);
+            playerChoiceImg.setBackgroundResource(R.drawable.paper);
+
             return compWins;
         }
 
         // paper - scissors -> scissors win
         if ((compChoise == ppr) && (playerChoise == scrs)){
+
             score++;
+
+            computerChoiceImg.setBackgroundResource(R.drawable.paper);
+            playerChoiceImg.setBackgroundResource(R.drawable.scissors);
+
             return playerWins;
         }
 
         // paper - rock -> paper wins
         if ((compChoise == ppr) && (playerChoise == rck)){
+
             score = 0;
+
+            computerChoiceImg.setBackgroundResource(R.drawable.paper);
+            playerChoiceImg.setBackgroundResource(R.drawable.rock);
+
             return compWins;
         }
 
