@@ -5,14 +5,73 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="VS"
+        android:id="@+id/vsText"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Computer"
+        android:id="@+id/computerLabel"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Player"
+        android:id="@+id/playerLabel"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=".."
+        android:id="@+id/computerChoiceText"
+        android:layout_above="@+id/vsText"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=".."
+        android:id="@+id/playerChoiceText"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/vsText" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/computerChoiceImg"
+        android:layout_above="@+id/computerChoiceText"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/playerChoiceImg"
+        android:layout_above="@+id/playerChoiceText"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rock"
         android:id="@+id/rockBtn"
-        android:layout_alignTop="@+id/paperBtn"
-        android:layout_alignParentStart="true"
-        android:onClick="rockChoice" />
+        android:onClick="rockChoice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,7 +87,7 @@
         android:layout_height="wrap_content"
         android:text="Scissors"
         android:id="@+id/scissorsBtn"
-        android:layout_alignTop="@+id/paperBtn"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="scissorsChoice" />
 
@@ -36,54 +95,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Winner is.."
-        android:id="@+id/resultLbl"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Score: 0"
-        android:id="@+id/scoreLbl"
+        android:id="@+id/scoreText"
+        android:layout_below="@+id/vsText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Battle!"
+        android:id="@+id/resultText"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Highest score: 0"
+        android:id="@+id/highestScoreText"
+        android:layout_below="@+id/scoreText"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=".."
-        android:id="@+id/computerChoiseLbl"
-        android:layout_marginTop="114dp"
-        android:layout_below="@+id/scoreLbl"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=".."
-        android:id="@+id/playerChoiseLbl"
-        android:layout_alignBottom="@+id/computerChoiseLbl"
-        android:layout_alignEnd="@+id/scissorsBtn" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Computer"
-        android:id="@+id/textView"
-        android:layout_below="@+id/computerChoiseLbl"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Player"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/playerChoiseLbl"
-        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

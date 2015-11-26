@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">RockPaperScissors-App</string>
+    <string name="app_name">RPS Game</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="rock_str">Rock</string>
+    <string name="paper_str">Paper</string>
+    <string name="scissors_str">Scissors</string>
+    <string name="score_str">Score</string>
+    <string name="highest_score_str">Highest score</string>
+    <string name="cmp_wins_str">Computer Wins!</string>
+    <string name="plr_wins_str">You Win!</string>
+    <string name="even_score_str">Even! Try again.</string>
+    <string name="error_text">Ooops! Something went wrong..</string>
 </resources>
