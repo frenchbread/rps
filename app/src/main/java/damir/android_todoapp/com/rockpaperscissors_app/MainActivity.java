@@ -19,6 +19,8 @@ public class MainActivity extends Activity {
     String rock, paper, scissors;
     String choices[];
 
+    String scoreStr, highestScoreStr, cmpWinsStr, plrWinsStr, evenStr, errorStr;
+
     static int hightestScore = 0;
     static int score = 0;
 
@@ -40,9 +42,16 @@ public class MainActivity extends Activity {
         computerChoiceImg = (ImageView)findViewById(R.id.computerChoiceImg);
         playerChoiceImg = (ImageView)findViewById(R.id.playerChoiceImg);
 
-        rock = getResources().getString(R.string.rock_text);
-        paper = getResources().getString(R.string.paper_text);
-        scissors = getResources().getString(R.string.scissors_text);
+        rock = getResources().getString(R.string.rock_str);
+        paper = getResources().getString(R.string.paper_str);
+        scissors = getResources().getString(R.string.scissors_str);
+
+        scoreStr = getResources().getString(R.string.score_str);
+        highestScoreStr = getResources().getString(R.string.highest_score_str);
+        cmpWinsStr = getResources().getString(R.string.cmp_wins_str);
+        plrWinsStr = getResources().getString(R.string.plr_wins_str);
+        evenStr = getResources().getString(R.string.even_score_str);
+        errorStr = getResources().getString(R.string.error_text);
 
         choices = new String[] { rock, paper, scissors };
     }
@@ -95,13 +104,13 @@ public class MainActivity extends Activity {
 
         resultText.setText(Result);
 
-        scoreText.setText("Score: " + score);
+        scoreText.setText(scoreStr + ": " + score);
 
         if (score >= hightestScore){
             hightestScore = score;
         }
 
-        highestScoreText.setText("Highest score: " + hightestScore);
+        highestScoreText.setText(highestScoreStr + ": " + hightestScore);
     }
 
     // Function that updates Images
@@ -136,9 +145,9 @@ public class MainActivity extends Activity {
         String ppr = paper;
         String scrs = scissors;
 
-        String compWins = "Computer wins!";
-        String playerWins = "Player wins!";
-        String even = "Even! Try again!";
+        String compWins = cmpWinsStr;
+        String playerWins = plrWinsStr;
+        String even = evenStr;
 
         // computer - player
 
@@ -194,6 +203,6 @@ public class MainActivity extends Activity {
             return compWins;
         }
 
-        return "Ooops! Something is wrong!";
+        return errorStr;
     }
 }
