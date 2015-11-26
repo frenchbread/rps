@@ -2,8 +2,6 @@ package damir.android_todoapp.com.rockpaperscissors_app;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,15 +12,14 @@ import java.util.Random;
 public class MainActivity extends Activity {
 
     Button rockBtn, paperBtn, scissorsBtn;
-    TextView computerChoiceText, playerChoiceText, resultText, scoreText;
+    TextView computerChoiceText, playerChoiceText, resultText, scoreText, highestScoreText;
 
-    static ImageView computerChoiceImg, playerChoiceImg;
+    ImageView computerChoiceImg, playerChoiceImg;
 
-    // TODO: Change labels to images.
+    String rock, paper, scissors;
+    String choices[];
 
-    static final String rock = "Rock", paper = "Paper", scissors = "Scissors";
-    static String[] choices = { rock, paper, scissors };
-
+    static int hightestScore = 0;
     static int score = 0;
 
     @Override
@@ -35,12 +32,19 @@ public class MainActivity extends Activity {
         scissorsBtn = (Button)findViewById(R.id.scissorsBtn);
 
         computerChoiceText = (TextView)findViewById(R.id.computerChoiceText);
-        playerChoiceText = (TextView)findViewById(R.id.computerChoiceText);
+        playerChoiceText = (TextView)findViewById(R.id.playerChoiceText);
         resultText = (TextView)findViewById(R.id.resultText);
         scoreText = (TextView)findViewById(R.id.scoreText);
+        highestScoreText = (TextView)findViewById(R.id.highestScoreText);
 
         computerChoiceImg = (ImageView)findViewById(R.id.computerChoiceImg);
         playerChoiceImg = (ImageView)findViewById(R.id.playerChoiceImg);
+
+        rock = getResources().getString(R.string.rock_text);
+        paper = getResources().getString(R.string.paper_text);
+        scissors = getResources().getString(R.string.scissors_text);
+
+        choices = new String[] { rock, paper, scissors };
     }
 
     public void rockChoice(View view){
@@ -48,30 +52,15 @@ public class MainActivity extends Activity {
         String cmpChoice = PRS();
         String plrChoice = rock;
 
-        computerChoiceText.setText(cmpChoice);
-        playerChoiceText.setText(plrChoice);
-
-        changeImages(cmpChoice, plrChoice);
-
-        resultText.setText(Result(cmpChoice, plrChoice));
-
-        scoreText.setText("Score: " + score);
-
+        setTheWinner(cmpChoice, plrChoice);
     }
 
-    public void paperChoice(View view){
+    public void paperChoice(View view) {
 
         String cmpChoice = PRS();
         String plrChoice = paper;
 
-        computerChoiceText.setText(cmpChoice);
-        playerChoiceText.setText(plrChoice);
-
-        changeImages(cmpChoice, plrChoice);
-
-        resultText.setText(Result(cmpChoice, plrChoice));
-
-        scoreText.setText("Score: " + score);
+        setTheWinner(cmpChoice, plrChoice);
     }
 
     public void scissorsChoice(View view){
@@ -79,40 +68,11 @@ public class MainActivity extends Activity {
         String cmpChoice = PRS();
         String plrChoice = scissors;
 
-        computerChoiceText.setText(cmpChoice);
-        playerChoiceText.setText(plrChoice);
-
-        changeImages(cmpChoice, plrChoice);
-
-        resultText.setText(Result(cmpChoice, plrChoice));
-
-        scoreText.setText("Score: " + score);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        setTheWinner(cmpChoice, plrChoice);
     }
 
     // Function that returns random value in range from 0 to 2
-    public static String PRS(){
+    public String PRS(){
 
         Random rand = new Random();
 
@@ -124,40 +84,53 @@ public class MainActivity extends Activity {
         return choices[randomNum];
     }
 
-    public static void changeImages(String cmpChoice, String plrChoice){
+    public void setTheWinner(String cmpChoice, String plrChoice){
 
-        switch (cmpChoice){
-            case rock:
-                computerChoiceImg.setBackgroundResource(R.drawable.rock);
-                break;
-            case paper:
-                computerChoiceImg.setBackgroundResource(R.drawable.paper);
-                break;
-            case scissors:
-                computerChoiceImg.setBackgroundResource(R.drawable.scissors);
-                break;
-            default:
-                computerChoiceImg.setBackground(null);
+        String Result = Result(cmpChoice, plrChoice);
+
+        computerChoiceText.setText(cmpChoice);
+        playerChoiceText.setText(plrChoice);
+
+        changeImages(cmpChoice, plrChoice);
+
+        resultText.setText(Result);
+
+        scoreText.setText("Score: " + score);
+
+        if (score >= hightestScore){
+            hightestScore = score;
         }
 
-        switch (plrChoice){
-            case rock:
+        highestScoreText.setText("Highest score: " + hightestScore);
+    }
+
+    // Function that updates Images
+    public void changeImages(String cmpChoice, String plrChoice){
+
+        for (int i=0; i<choices.length; i++){
+            if (cmpChoice == rock){
+                computerChoiceImg.setBackgroundResource(R.drawable.rock);
+            } else if (cmpChoice == paper){
+                computerChoiceImg.setBackgroundResource(R.drawable.paper);
+            } else if (cmpChoice == scissors){
+                computerChoiceImg.setBackgroundResource(R.drawable.scissors);
+            }
+        }
+
+        for (int j=0; j<choices.length; j++){
+            if (plrChoice == rock){
                 playerChoiceImg.setBackgroundResource(R.drawable.rock);
-                break;
-            case paper:
+            } else if (plrChoice == paper){
                 playerChoiceImg.setBackgroundResource(R.drawable.paper);
-                break;
-            case scissors:
+            } else if (plrChoice == scissors){
                 playerChoiceImg.setBackgroundResource(R.drawable.scissors);
-                break;
-            default:
-                playerChoiceImg.setBackground(null);
+            }
         }
 
     }
 
     // Funciton that checks throws and return result of how is the winner
-    public static String Result(String compChoise, String playerChoise){
+    public String Result(String compChoise, String playerChoise){
 
         String rck = rock;
         String ppr = paper;
